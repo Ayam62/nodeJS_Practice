@@ -5,7 +5,7 @@ const path=require("path")//enables working with file
 const server=http.createServer((req,res)=>{
 
     //defile public directory
-    const publicDir=path.join(__dirname,"07_StaticFile");//means i am inside my 07_static file.
+    const publicDir=path.join(__dirname);//means i am inside my 07_static file.
 
 
     //set the file path based on the request url
@@ -36,7 +36,7 @@ const server=http.createServer((req,res)=>{
         if(err){
             if(err.code==="ENOENT"){
                 //code for file not found. this heps to distinguish it from other types of error
-                res.writeHead(404,{"content-type":"text/plai"});
+                res.writeHead(404,{"content-type":"text/plain"});
                 res.end("404.File not found. ali majale khoj")
             }
             else{
