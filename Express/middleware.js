@@ -26,7 +26,7 @@ app.get("/users",(req,res)=>{
 
 app.post("/users",(req,res)=>{
     const {name,age}=req.body;//get name and age from the post request
-    console.log(name,age);
+    console.log(name,age,req.body);
     if(name && age){
         const newUser={
             id:users.length+1,
