@@ -2,7 +2,7 @@ const express=require("express");
 const app=express();
 
 app.use((req,res,next)=>{
-    console.log(`${req.method} ${req.url}-${new Date().toISOString()}`);//shows what is happening when just like a cctv camera inside a home to track every actions
+    console.log(`${req.method} ${req.url}-${new Date().toISOString()}`);//shows what is happening before get request when just like a cctv camera inside a home to track every actions
     next();//passes control to nexxt middleware(next camera) or route handler
 })
 
