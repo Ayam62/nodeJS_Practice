@@ -1,9 +1,11 @@
+
+import mongoose from "mongoose";
 const employeeSchema = new mongoose.Schema({
-    name:"Ayam",
-    salary:3,
-    language:"Python",
-    city:"damak",
-    isManager:true
+    name:String,
+    salary:Number,
+    language:String,
+    city:String,
+    isManager:Boolean
   });
 
   const Employee = mongoose.model('Employee', employeeSchema);
