@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Home = () => {
+    const [task,setTask]=useState("")
+    const TaskArray=[];
   return (
     <div className="Home w-full bg-gray-700 h-screen flex justify-center items-center">
       <div className="container bg-slate-800">
@@ -9,7 +11,7 @@ const Home = () => {
         </div>
         <div className="content">
           <div className="input">
-            <input type="text" placeholder="Enter your task here" />
+            <input type="text" placeholder="Enter your task here" onChange={(e)=>setTask(e.target.value)} />
             <button className="button-add">Add</button>
           </div>
           <div className="todo-task">
