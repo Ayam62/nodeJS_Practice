@@ -108,3 +108,8 @@ input::placeholder {
   align-items: center;
   background: #334154;
 }
+.NoTask h2{
+  background: #334154;
+  color: white;
+  text-align: center;
+}
