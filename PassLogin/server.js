@@ -1,5 +1,11 @@
 const express = require('express')
 const bcrypt=require("bcrypt")
+const passport=require("passport")
+
+const initializePassport=require("./passport.config.js")
+initializePassport(passport,email=>{
+    return users.find(user=>user.email===email)
+})
 
 const app = express()
 const port = 3000

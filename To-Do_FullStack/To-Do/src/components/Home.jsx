@@ -18,6 +18,7 @@ const Home = () => {
     .catch(err=>console.log(err))
   },[])
 
+  
   return (
     <div className="Home w-full bg-gray-700 h-screen flex justify-center items-center">
       <div className="container bg-slate-800">

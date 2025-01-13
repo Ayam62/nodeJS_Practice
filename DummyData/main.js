@@ -28,16 +28,17 @@ app.get("/generate", async (req, res) => {
   const language=["Python", "JavaScript", "Go", "Ruby", "C++"]
   const cities = ["Kathmandu", "Pokhara", "Biratnagar", "Damak", "Chitwan"];
   const isManager=[true,false,true,false,true]
-
-  const random=Math.floor(Math.random()*5)
+  function random(){
+    return Math.floor(Math.random()*5)
+  }
 
   for (let index = 0; index < 10; index++) {
     let e =await Employee.create({
-      name: names[random],
-      salary: salary[random],
-      language: language[random],
-      city: cities[random],
-      isManager: isManager[random],
+      name: names[random()],
+      salary: salary[random()],
+      language: language[random()],
+      city: cities[random()],
+      isManager: isManager[random()],
     });
     
   }
