@@ -113,3 +113,8 @@ input::placeholder {
   color: white;
   text-align: center;
 }
+.line-through{
+  text-decoration: line-through;
+}
+
+
