@@ -20,9 +20,9 @@ app.get('/get', (req, res) => {
 })
 
 app.post("/add",(req,res)=>{
-    console.log("Request body:", req.body);
+    // console.log("Request body:", req.body);
     const task=req.body.task
-    console.log(task)
+    // console.log(task)
     TodoModel.create({
         task:task,
     })
