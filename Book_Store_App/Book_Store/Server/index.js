@@ -32,7 +32,12 @@ async function run() {
     //create a collection for the database
 
     const books=client.db("BookInventory").collection("books")
-    
+    app.post("/upload-book",async(req,res)=>{
+      const data=req.body
+      const result =await bookCollection.insertOne(data)
+
+    })
+
     await client.db("admin").command({ ping: 1 });
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
   } finally {
