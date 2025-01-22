@@ -37,6 +37,18 @@ async function run() {
       const result = await books.insertOne(data); // Use `books` instead of `bookCollection`
       res.send(result);
     });
+    //get books from db
+    app.get("/all-books",async(req,res)=>{
+      const allBooks= books.find();
+      const result =await allBooks.toArray()
+      res.send(result)
+    })
+    //update books
+
+
+
+
+
 
     // Ping the database to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
