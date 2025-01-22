@@ -1,16 +1,15 @@
-const express = require('express')
-const app = express()
-const port =process.env.PORT || 5001
-const cors=require("cors")
+const express = require('express');
+const app = express();
+const port = process.env.PORT || 5001;
+const cors = require("cors");
 
-//middlewares to connect with  frontend
-app.use(cors())
-app.use(express.json())//this allows backend to access frontend data(req.body)
+//middlewares to connect with frontend
+app.use(cors());
+app.use(express.json()); //this allows backend to access frontend data(req.body)
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
-
+  res.send('Hello World!');
+});
 
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const uri = "mongodb+srv://ayam:ayam@cluster0.xdvx3nz.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
@@ -26,31 +25,28 @@ const client = new MongoClient(uri, {
 
 async function run() {
   try {
-    // Connect the client to the server	(optional starting in v4.7)
+    // Connect the client to the server (optional starting in v4.7)
     await client.connect();
-    // Send a ping to confirm a successful connection
-    //create a collection for the database
 
-    const books=client.db("BookInventory").collection("books")
-    app.post("/upload-book",async(req,res)=>{
-      const data=req.body
-      const result =await bookCollection.insertOne(data)
+    // Create a collection for the database
+    const books = client.db("BookInventory").collection("books");
 
-    })
+    // POST route to upload book data
+    app.post("/upload-book", async (req, res) => {
+      const data = req.body;
+      const result = await books.insertOne(data); // Use `books` instead of `bookCollection`
+      res.send(result);
+    });
 
+    // Ping the database to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
-  } finally {
-    // Ensures that the client will close when you finish/error
-    await client.close();
+  } catch (err) {
+    console.error("Error connecting to MongoDB:", err);
   }
 }
 run().catch(console.dir);
 
-
-
-
-
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+  console.log(`Example app listening on port ${port}`);
+});
